@@ -9,6 +9,7 @@ import java.util.Collection;
 public interface IUsersService {
     void save(Users tmp);
 
+
     Users DeleteById(Long id);
 
     Collection<Users> getUsersListByRole(String user);
