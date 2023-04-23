@@ -10,4 +10,6 @@ import java.util.Collection;
 @Repository
 public interface UsersRepository extends JpaRepository<Users,Long> {
     Collection<Users> findAllByUserType(UsersType type);
+
+    Users findByUserName(String username);
 }

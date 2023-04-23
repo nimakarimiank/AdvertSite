@@ -15,7 +15,6 @@ import java.util.List;
 @RequestMapping("/advert")
 @RestController
 public class AdvertController {
-    //TODO: GET nonVALIDATED ADVERT LIST
     @Autowired
     IAdvertService advertService;
 

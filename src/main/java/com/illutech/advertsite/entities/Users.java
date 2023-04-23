@@ -10,7 +10,7 @@ public class Users {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
+    private String emailAddress;
     private String userName;
     private String password;
     @Enumerated(EnumType.STRING)
@@ -43,7 +43,12 @@ public class Users {
 
     public Users() {
     }
-
+    public String getEmailAddress() {
+        return emailAddress;
+    }
+    public void setEmailAddress(String emailAddress) {
+        this.emailAddress = emailAddress;
+    }
     public String getUserName() {
         return userName;
     }

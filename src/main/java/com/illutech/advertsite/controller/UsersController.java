@@ -23,6 +23,7 @@ public class UsersController {
         Users tmp = new Users();
         tmp.setPassword(model.getPassword());
         tmp.setUserName(model.getUserName());
+        tmp.setEmailAddress(model.getEmailAddress());
         tmp.setUserType(handleUserType(model.getUserType()));
         usersService.save(tmp);
         return tmp;
