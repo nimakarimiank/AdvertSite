@@ -35,4 +35,9 @@ public class UsersService implements IUsersService{
         UsersType type = UsersUtilityMethods.handleUserType(user);
         return repository.findAllByUserType(type);
     }
+
+    @Override
+    public boolean exists(Long id) {
+        return repository.existsById(id);
+    }
 }

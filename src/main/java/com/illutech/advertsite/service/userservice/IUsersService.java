@@ -13,4 +13,6 @@ public interface IUsersService {
     Users DeleteById(Long id);
 
     Collection<Users> getUsersListByRole(String user);
+
+    boolean exists(Long id);
 }
