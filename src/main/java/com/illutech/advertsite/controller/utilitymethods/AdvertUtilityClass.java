@@ -2,8 +2,6 @@ package com.illutech.advertsite.controller.utilitymethods;
 
 import com.illutech.advertsite.entities.Advert;
 import com.illutech.advertsite.entities.subentitites.UsersType;
-import com.illutech.advertsite.models.AdvertModel;
-import com.illutech.advertsite.models.USD_Model;
 import com.illutech.advertsite.service.advertservice.IAdvertService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.client.RestTemplate;
