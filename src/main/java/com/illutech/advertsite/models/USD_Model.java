@@ -7,7 +7,6 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class AdvertModel {
-    private String advertText;
-    private String price;
+public class USD_Model {
+    private String value;
 }

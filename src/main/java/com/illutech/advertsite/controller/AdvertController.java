@@ -5,9 +5,11 @@ import com.illutech.advertsite.entities.Advert;
 import com.illutech.advertsite.entities.subentitites.UsersType;
 import com.illutech.advertsite.error.AdvertNotFoundException;
 import com.illutech.advertsite.models.AdvertModel;
+import com.illutech.advertsite.models.USD_Model;
 import com.illutech.advertsite.service.advertservice.IAdvertService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.RestTemplate;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -68,7 +70,8 @@ public class AdvertController {
     public Advert createNewAdvert(@RequestBody AdvertModel model) {
 
         Advert tmp = new Advert(
-                model.getAdvertText(),
+                model.getAdvertText()
+                ,model.getPrice(),
                 false,false
         );
          return advertService.save(tmp);
@@ -98,8 +101,10 @@ public class AdvertController {
     }
     @GetMapping("/userView")
     public Collection<Advert> getValidatedAdvertList(){
-        return advertService.getValidatedAdvertList();
+        Collection<Advert> advertList = AdvertUtilityClass.getCurrentUSDPrice(advertService.getValidatedAdvertList());
+        return advertList;
     }
+
     @GetMapping("/adminView")
     public Collection<Advert> getAllAdvertList(){
         return advertService.getAdvertList();

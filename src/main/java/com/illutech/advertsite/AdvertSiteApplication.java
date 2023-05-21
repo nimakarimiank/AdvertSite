@@ -9,5 +9,4 @@ public class AdvertSiteApplication {
     public static void main(String[] args) {
         SpringApplication.run(AdvertSiteApplication.class, args);
     }
-
 }

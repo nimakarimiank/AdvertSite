@@ -2,10 +2,17 @@ package com.illutech.advertsite.entities;
 
 import com.illutech.advertsite.entities.subentitites.UsersType;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import java.util.Collection;
 
 @Entity
 @Data
+@Builder
+@AllArgsConstructor
 public class Users {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

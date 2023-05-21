@@ -4,8 +4,12 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 
 @Entity
+@AllArgsConstructor
+@NoArgsConstructor
 public class Advert {
 
 
@@ -13,11 +17,11 @@ public class Advert {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long Id;
     private String advertText;
+    private String price;
     private boolean validated;
     private boolean deleted;
 
-    public Advert() {
-    }
+
 
     public String getAdvertText() {
         return advertText;
@@ -49,7 +53,23 @@ public class Advert {
         this.deleted = deleted;
     }
 
+    public String getPrice() {
+
+        return price;
+    }
+
+    public void setPrice(String price) {
+        this.price = price;
+    }
+
+
     public Advert(String advertText, boolean validated, boolean deleted) {
+        this.advertText = advertText;
+        this.validated = validated;
+        this.deleted = deleted;
+    }
+    public Advert(String advertText,String price, boolean validated, boolean deleted) {
+        this.price = price;
         this.advertText = advertText;
         this.validated = validated;
         this.deleted = deleted;

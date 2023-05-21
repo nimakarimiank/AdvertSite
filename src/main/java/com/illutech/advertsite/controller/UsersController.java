@@ -30,7 +30,7 @@ public class UsersController {
         return tmp;
     }
     @PostMapping("/setUsers")
-    public Users createUsersAccount(@RequestBody UsersModel model){
+    public Users createUsersAccount(@RequestBody  UsersModel model){
         Users tmp = new Users();
         tmp.setPassword(model.getPassword());
         tmp.setUserName(model.getUserName());
