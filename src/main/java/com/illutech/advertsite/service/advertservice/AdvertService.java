@@ -1,5 +1,6 @@
 package com.illutech.advertsite.service.advertservice;
 
+import com.illutech.advertsite.controller.utilitymethods.AdvertUtilityClass;
 import com.illutech.advertsite.entities.Advert;
 import com.illutech.advertsite.repository.advertrepository.AdvertRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,7 +51,8 @@ public class AdvertService implements IAdvertService{
 
     @Override
     public Collection<Advert> getValidatedAdvertList() {
-        return repository.findAllByValidated(true);
+
+        return AdvertUtilityClass.getCurrentUSDPrice(repository.findAllByValidated(true));
     }
 
     @Override

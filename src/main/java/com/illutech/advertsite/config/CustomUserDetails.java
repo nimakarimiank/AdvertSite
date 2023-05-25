@@ -4,26 +4,22 @@ import com.illutech.advertsite.entities.Users;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.stereotype.Component;
-
 import java.util.Collection;
 import java.util.Collections;
 
 public class CustomUserDetails implements UserDetails {
-    private Users user ;
-
+    private Users user;
     public CustomUserDetails(Users user) {
         super();
-        this.user = user;
+        this.user = user;//alternative for using @Autowired annotation which is not really a good idea.
     }
-
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return Collections.singleton(new SimpleGrantedAuthority(user.getUserType()));
     }
-
     @Override
-    public String getPassword() {
+    public String getPassword()
+    {
         return user.getPassword();
     }
 

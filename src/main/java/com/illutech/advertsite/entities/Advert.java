@@ -1,11 +1,10 @@
 package com.illutech.advertsite.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+
+import java.util.Collection;
 
 @Entity
 @AllArgsConstructor
@@ -20,7 +19,8 @@ public class Advert {
     private String price;
     private boolean validated;
     private boolean deleted;
-
+    @OneToMany(mappedBy = "advert")
+    private Collection<UserAdRate> adRate;
 
 
     public String getAdvertText() {

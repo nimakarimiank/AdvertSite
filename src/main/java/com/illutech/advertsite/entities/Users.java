@@ -23,6 +23,8 @@ public class Users {
     @Enumerated(EnumType.STRING)
     @Column(name = "users_type")
     private UsersType userType;
+    @OneToMany(mappedBy = "user")
+    private Collection<UserAdRate> adRate;
 
     public Users(String userName, String password, UsersType userType) {
         this.userName = userName;
