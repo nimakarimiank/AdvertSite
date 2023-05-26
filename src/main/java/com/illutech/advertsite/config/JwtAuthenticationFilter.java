@@ -7,6 +7,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.lang.NonNull;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
@@ -32,6 +33,10 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         }
         jwtToken = authenticationHeader.substring(7); //pos 7 because bearer
         username = jwtService.extractUserName(jwtToken);
+        //SecurityContextHolder.getContext().getAuthentication()==null //MEANS USER IS NOT YET AUTHENTICATED
+        if (username!=null && SecurityContextHolder.getContext().getAuthentication()==null){
+
+        }
 
     }
 }
