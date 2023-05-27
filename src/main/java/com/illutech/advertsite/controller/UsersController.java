@@ -38,6 +38,11 @@ public class UsersController {
         usersService.save(tmp);
         return tmp;
     }
+    @PostMapping("/setUsersValidate")
+    public String validateUsers(){
+        //TODO implement user validations
+        return "TODO";
+    }
     @PostMapping("/setAdmins")
     public Users createAdminAccount(@RequestBody UsersModel model){
         Users tmp = new Users();
