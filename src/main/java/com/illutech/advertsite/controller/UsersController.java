@@ -1,10 +1,13 @@
 package com.illutech.advertsite.controller;
 
+import com.illutech.advertsite.dto.responses.AuthenticationResponse;
 import com.illutech.advertsite.entities.Users;
 import com.illutech.advertsite.error.UserNotFoundException;
+import com.illutech.advertsite.models.AuthenticationRequest;
 import com.illutech.advertsite.models.UsersModel;
 import com.illutech.advertsite.service.userservice.IUsersService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
@@ -30,20 +33,14 @@ public class UsersController {
         return tmp;
     }
     @PostMapping("/setUsers")
-    public Users createUsersAccount(@RequestBody  UsersModel model){
-        Users tmp = new Users();
-        tmp.setPassword(model.getPassword());
-        tmp.setUserName(model.getUserName());
-        tmp.setUserType(handleUserType("USER"));
-        usersService.save(tmp);
-        return tmp;
+    public ResponseEntity<AuthenticationResponse> createUsersAccount(@RequestBody UsersModel model){return ResponseEntity.ok(usersService.register(model));}
+    @PostMapping("/setUsersValidate")
+    public ResponseEntity<AuthenticationResponse> validateUsers(
+            @RequestBody AuthenticationRequest authenticationRequest
+    ){
+        return ResponseEntity.ok(usersService.authenticate(authenticationRequest));
     }
 
-    @PostMapping("/setUsersValidate")
-    public String validateUsers(){
-        //TODO implement user validations
-        return "TODO";
-    }
     @PostMapping("/setAdmins")
     public Users createAdminAccount(@RequestBody UsersModel model){
         Users tmp = new Users();

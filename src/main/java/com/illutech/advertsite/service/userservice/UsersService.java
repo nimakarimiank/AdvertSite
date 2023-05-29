@@ -1,20 +1,26 @@
 package com.illutech.advertsite.service.userservice;
 
 import com.illutech.advertsite.controller.utilitymethods.UsersUtilityMethods;
+import com.illutech.advertsite.dto.responses.AuthenticationResponse;
 import com.illutech.advertsite.entities.Users;
 import com.illutech.advertsite.entities.subentitites.UsersType;
+import com.illutech.advertsite.models.AuthenticationRequest;
+import com.illutech.advertsite.models.UsersModel;
 import com.illutech.advertsite.repository.usersrepository.UsersRepository;
 import jakarta.persistence.EntityNotFoundException;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Collection;
 import java.util.Optional;
 
+import static com.illutech.advertsite.controller.utilitymethods.UsersUtilityMethods.handleUserType;
+
 @Service
+@RequiredArgsConstructor
 public class UsersService implements IUsersService{
-    @Autowired
-    UsersRepository repository;
+    private final UsersRepository repository; //this + @RequiredArgsConstructor = @Autowired
     @Override
     public void save(Users tmp) {
         repository.save(tmp);
@@ -40,4 +46,20 @@ public class UsersService implements IUsersService{
     public boolean exists(Long id) {
         return repository.existsById(id);
     }
+
+    @Override
+    public AuthenticationResponse register(UsersModel model) {
+        Users tmp = new Users();
+        tmp.setPassword(model.getPassword());
+        tmp.setUserName(model.getUserName());
+        tmp.setUserType(handleUserType("USER"));
+        save(tmp);
+        return null; //TODO
+    }
+
+    @Override
+    public AuthenticationResponse authenticate(AuthenticationRequest authenticationRequest) {
+        return null;
+    }
+
 }
