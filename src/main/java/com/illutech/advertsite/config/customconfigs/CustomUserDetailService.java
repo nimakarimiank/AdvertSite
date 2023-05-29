@@ -1,4 +1,4 @@
-package com.illutech.advertsite.config;
+package com.illutech.advertsite.config.customconfigs;
 
 import com.illutech.advertsite.entities.Users;
 import com.illutech.advertsite.repository.usersrepository.UsersRepository;

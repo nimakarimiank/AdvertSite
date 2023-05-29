@@ -1,6 +1,6 @@
 package com.illutech.advertsite.config.jwtconfig;
 
-import com.illutech.advertsite.config.CustomUserDetails;
+import com.illutech.advertsite.config.customconfigs.CustomUserDetails;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -12,7 +12,6 @@ import java.security.Key;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 import java.util.function.Function;
 
 @Service
@@ -27,12 +26,9 @@ public class JwtService {
         final String username = extractUserName(token);
         return (username.equals(userDetails.getUsername()))&& !isTokenExpired(token);
     }
-
     private boolean isTokenExpired(String token) {
         return extractExpiration(token).before(new Date());
-
     }
-
     private Date extractExpiration(String token) {
         return extractClaim(token,Claims::getExpiration);
     }
