@@ -11,15 +11,12 @@ import com.illutech.advertsite.models.UsersModel;
 import com.illutech.advertsite.repository.usersrepository.UsersRepository;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-
 import java.util.Collection;
 import java.util.Optional;
-
 import static com.illutech.advertsite.controller.utilitymethods.UsersUtilityMethods.handleUserType;
 
 @Service
